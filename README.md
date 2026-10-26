@@ -2,6 +2,13 @@
 
 Arabic-first restaurant website with an English language option, a photographic burger animation, menu categories, ingredient details, and a persistent shopping bag.
 
+## Interactions
+
+- The burger separates automatically and responds to pointer movement, taps and keyboard activation.
+- Menu categories transition between products. On desktop, food cards tilt toward the pointer.
+- Adding an item animates its thumbnail into the bag before showing the updated order.
+- Reduced-motion preferences disable decorative movement.
+
 ## Run locally
 
 Serve this directory with any static HTTP server, then open its local URL. There is no build step and no package installation is required.
