@@ -1,69 +1,170 @@
 'use strict';
-const menu=[
-{id:'cheeseburger',name:'Cheeseburger',ar:'تشيز برجر',category:'mains',prices:[20,27],visual:['real'],description:'The Catch cheeseburger. Choose your size, then make it yours.'},
-{id:'double',name:'Double Cheeseburger',ar:'دبل تشيز برجر',category:'mains',prices:[26,33],visual:['extras',100,100],description:'Double cheeseburger. Available in two sizes.'},
-{id:'crispy',name:'Crispy Chicken',ar:'كريسبي تشكن',category:'mains',prices:[20,27],visual:['food',0,0],description:'Crispy chicken burger. Available in two sizes.'},
-{id:'hotdog',name:'Chicken Hot Dog',ar:'هوت دوج',category:'mains',prices:[16,23],visual:['food',50,0],description:'Chicken hot dog. Available in two sizes.'},
-{id:'fries',name:'Fries',ar:'فرايز',category:'sides',prices:[7],visual:['food',100,0]},
-{id:'catchfries',name:'Catch Fries',ar:'كاتش فرايز',category:'sides',prices:[12],visual:['food',0,50]},
-{id:'chickenfries',name:'Chicken Fries',ar:'تشيكن فرايز',category:'sides',prices:[17],visual:['food',50,50]},
-{id:'mozzarella',name:'Mozzarella Sticks',ar:'أصابع موزاريلا',category:'sides',prices:[12],visual:['food',100,50]},
-{id:'cheddar',name:'Cheddar Cheese Bites',ar:'جبنة التشيدر',category:'sides',prices:[13],visual:['food',0,100]},
-{id:'jalapeno',name:'Jalapeño Cheese Bites',ar:'جبنة الهالبينو',category:'sides',prices:[9],visual:['food',50,100]},
-{id:'catchsauce',name:'Catch Sauce',ar:'كاتش صوص',category:'sauces',prices:[2],visual:['extras',0,0]},
-{id:'honey',name:'Honey Mustard',ar:'هني مسترد',category:'sauces',prices:[2],visual:['extras',50,0]},
-{id:'cheesesauce',name:'Cheese Sauce',ar:'تشيز صوص',category:'sauces',prices:[2],visual:['extras',100,0]},
-{id:'bbq',name:'Barbecue Sauce',ar:'باربيكيو صوص',category:'sauces',prices:[2],visual:['extras',0,50]},
-{id:'tartar',name:'Tartar Sauce',ar:'تارتر صوص',category:'sauces',prices:[2],visual:['extras',50,50]},
-{id:'softdrink',name:'Soft Drink',ar:'مشروب غازي',category:'drinks',prices:[3],visual:['extras',100,50]},
-{id:'orange',name:'Orange Juice',ar:'عصير برتقال',category:'drinks',prices:[3],visual:['extras',0,100]},
-{id:'water',name:'Water',ar:'ماء',category:'drinks',prices:[1],visual:['extras',50,100]}
+const menu = [
+  {id:'cheeseburger',name:'Cheeseburger',ar:'تشيز برجر',category:'mains',prices:[20,27]},
+  {id:'double',name:'Double Cheeseburger',ar:'دبل تشيز برجر',category:'mains',prices:[26,33]},
+  {id:'crispy',name:'Crispy Chicken',ar:'كريسبي تشكن',category:'mains',prices:[20,27]},
+  {id:'hotdog',name:'Chicken Hot Dog',ar:'هوت دوج',category:'mains',prices:[16,23]},
+  {id:'fries',name:'Fries',ar:'فرايز',category:'sides',prices:[7]},
+  {id:'catchfries',name:'Catch Fries',ar:'كاتش فرايز',category:'sides',prices:[12]},
+  {id:'chickenfries',name:'Chicken Fries',ar:'تشيكن فرايز',category:'sides',prices:[17]},
+  {id:'mozzarella',name:'Mozzarella Sticks',ar:'أصابع موزاريلا',category:'sides',prices:[12]},
+  {id:'cheddar',name:'Cheddar Cheese Bites',ar:'جبنة التشيدر',category:'sides',prices:[13]},
+  {id:'jalapeno',name:'Jalapeño Cheese Bites',ar:'جبنة الهالبينو',category:'sides',prices:[9]},
+  {id:'catchsauce',name:'Catch Sauce',ar:'كاتش صوص',category:'sauces',prices:[2]},
+  {id:'honey',name:'Honey Mustard',ar:'هني مسترد',category:'sauces',prices:[2]},
+  {id:'cheesesauce',name:'Cheese Sauce',ar:'تشيز صوص',category:'sauces',prices:[2]},
+  {id:'bbq',name:'Barbecue Sauce',ar:'باربيكيو صوص',category:'sauces',prices:[2]},
+  {id:'tartar',name:'Tartar Sauce',ar:'تارتر صوص',category:'sauces',prices:[2]},
+  {id:'softdrink',name:'Soft Drink',ar:'مشروب غازي',category:'drinks',prices:[3]},
+  {id:'orange',name:'Orange Juice',ar:'عصير برتقال',category:'drinks',prices:[3]},
+  {id:'water',name:'Water',ar:'ماء',category:'drinks',prices:[1]}
 ];
-const copy={
-ar:{home:'كاتش برجر - الرئيسية',navMenu:'القائمة',bag:'السلة',openBag:'فتح السلة',brand:'كاتش برجر',heroTitle:'من أول لقمة،<br> <em>لك رجعة.</em>',heroSub:'برجرك، بطاطسك، ولحظة على مزاجك.',explore:'اكتشف القائمة',burgerScene:'حرّك المؤشر أو المس البرجر لتحريك الطبقات',sceneWord:'كاتش',heroCaption:'تشيز برجر كاتش · المس البرجر',photoCaption:'كاتش بعد الغروب',menuEyebrow:'اختيارك. على ذوقك.',menuTitle:'قائمة كاتش<span>.</span>',menuSub:'برجر، بطاطس، والمزيد.',categories:'أقسام القائمة',mains:'البرجر',sides:'الطلبات الجانبية',sauces:'الصوصات',drinks:'المشروبات',currency:'ر.س',restaurantPhoto:'واجهة كاتش برجر المضيئة والديكور الداخلي الدافئ',nightTitle:'البرجر من كاتش،<br><em>واللّمة عليكم.</em>',disclaimer:'بعض الصور توضيحية. نسخة تجريبية — الطلب والدفع غير متاحين حالياً.',bagTitle:'سلّتك<span>.</span>',closeBag:'إغلاق السلة',closeProduct:'إغلاق المنتج',checkoutTitle:'طلبك<span>.</span>',closeCheckout:'إغلاق مراجعة الطلب',checkoutNotice:'نسخة تجريبية. لن يتم تحصيل أي مبلغ أو إرسال الطلب للمطعم.',name:'الاسم',email:'البريد الإلكتروني',notes:'ملاحظات الطلب',optional:'اختياري',complete:'إنهاء التجربة',small:'صغير',large:'كبير',standard:'عادي',choose:'اختر',chooseSize:'اختر الحجم',extras:'إضافات اختيارية',languageLabel:'لغة الموقع',ingredients:'المكونات المؤكدة',recipeNote:'باقي تفاصيل الوصفة قيد التأكيد.',cheese:'جبنة إضافية',meat:'قطعة برجر إضافية',add:'أضف للسلة',each:'للقطعة',remove:'حذف',plusOne:'إضافة قطعة من',minusOne:'إزالة قطعة من',removeItem:'حذف من السلة:',subtotal:'المجموع',review:'مراجعة الطلب',cartNotice:'نسخة تجريبية. الدفع وإرسال الطلب غير متاحين حالياً.',empty:'سلّتك فارغة.',browse:'تصفح القائمة',orderTotal:'إجمالي الطلب',maximum:'وصلت للحد الأقصى للكمية',completed:'انتهت التجربة. لم يتم تحصيل مبلغ أو إرسال طلب.'},
-en:{home:'Catch Burger home',navMenu:'Menu',bag:'Bag',openBag:'Open order bag',brand:'CATCH BURGER',heroTitle:'One bite.<br> <em>You’ll be back.</em>',heroSub:'Your burger. Your fries. Your moment.',explore:'Explore the menu',burgerScene:'Move the pointer or tap the burger to play with its layers',sceneWord:'CATCH',heroCaption:'THE CATCH CHEESEBURGER · TAP TO PLAY',photoCaption:'CATCH AFTER DARK',menuEyebrow:'YOUR ORDER. YOUR WAY.',menuTitle:'On the menu<span>.</span>',menuSub:'Burgers, fries, and a little more.',categories:'Menu categories',mains:'Burgers & more',sides:'Sides',sauces:'Sauces',drinks:'Drinks',currency:'SAR',restaurantPhoto:'Catch Burger’s illuminated storefront and warm interior',nightTitle:'Bring your people.<br><em>Make it a Catch night.</em>',disclaimer:'Selected imagery is illustrative. Store preview — live ordering is not connected.',bagTitle:'Your bag<span>.</span>',closeBag:'Close bag',closeProduct:'Close product',checkoutTitle:'Your order<span>.</span>',closeCheckout:'Close checkout',checkoutNotice:'Preview only. No payment will be collected and no order will be sent to the restaurant.',name:'Name',email:'Email',notes:'Order notes',optional:'Optional',complete:'Complete preview',small:'Small',large:'Large',standard:'Standard',choose:'Choose',chooseSize:'Choose size',extras:'OPTIONAL EXTRAS',languageLabel:'Site language',ingredients:'Confirmed ingredients',recipeNote:'Remaining recipe details are to be confirmed.',cheese:'Extra cheese',meat:'Extra patty',add:'Add to bag',each:'each',remove:'Remove',plusOne:'Add one',minusOne:'Remove one',removeItem:'Remove from bag:',subtotal:'Subtotal',review:'Review order',cartNotice:'Preview only. Live payment and order fulfilment are not connected.',empty:'Your bag is empty.',browse:'Browse the menu',orderTotal:'Order total',maximum:'Maximum quantity reached',completed:'Preview complete. No payment collected. No order sent.'}
+const copy = {
+  ar:{
+    home:'كاتش برجر - الرئيسية',navigation:'التنقل الرئيسي',navMenu:'القائمة',navContact:'تواصل معنا',
+    languageLabel:'لغة الموقع',brand:'كاتش برجر',heroTitle:'من أول لقمة،<br><em>لك رجعة.</em>',
+    heroSub:'برجرك، بطاطسك، ولحظة على مزاجك.',explore:'اكتشف القائمة',heroCaption:'تشيز برجر كاتش',
+    burgerPhoto:'تشيز برجر كاتش على طبق أسود',menuEyebrow:'اختيارك. على ذوقك.',
+    menuTitle:'قائمة كاتش<span>.</span>',menuSub:'الأسعار بالريال السعودي.',
+    menuHint:'اضغط على الصنف للتفاصيل',categories:'أقسام القائمة',
+    mains:'البرجر',sides:'الطلبات الجانبية',sauces:'الصوصات',drinks:'المشروبات',currency:'ر.س',
+    small:'صغير',large:'كبير',standard:'السعر',details:'تفاصيل',closeProduct:'إغلاق التفاصيل',
+    ingredients:'المكونات المؤكدة',recipeNote:'باقي تفاصيل الوصفة قيد التأكيد.',
+    detailsPending:'لتفاصيل المكونات أو أي استفسار عن الحساسية، تواصل مع المطعم عبر واتساب.',
+    extras:'إضافات',cheeseExtra:'جبنة إضافية',pattyExtra:'قطعة برجر إضافية',
+    restaurantPhoto:'واجهة كاتش برجر المضيئة والديكور الداخلي الدافئ',photoCaption:'كاتش بعد الغروب',
+    nightTitle:'البرجر من كاتش،<br><em>واللّمة عليكم.</em>',
+    contactIntro:'للطلب والاستفسار، كلمنا على واتساب.',whatsapp:'للطلب عبر واتساب',
+    contactNote:'يفتح واتساب؛ أرسل رسالتك من هناك.',footerNote:'قائمة الطعام · الطلب مباشرة من المطعم عبر واتساب',
+    greeting:'السلام عليكم، حاب أطلب من كاتش.'
+  },
+  en:{
+    home:'Catch Burger home',navigation:'Main navigation',navMenu:'Menu',navContact:'Contact',
+    languageLabel:'Site language',brand:'CATCH BURGER',heroTitle:'One bite.<br><em>You’ll be back.</em>',
+    heroSub:'Your burger. Your fries. Your moment.',explore:'Explore the menu',heroCaption:'THE CATCH CHEESEBURGER',
+    burgerPhoto:'Catch cheeseburger on a black plate',menuEyebrow:'SOMETHING FOR YOUR CRAVING.',
+    menuTitle:'On the menu<span>.</span>',menuSub:'All prices in Saudi riyals.',
+    menuHint:'Tap a dish for details',categories:'Menu categories',
+    mains:'Burgers & more',sides:'Sides',sauces:'Sauces',drinks:'Drinks',currency:'SAR',
+    small:'Small',large:'Large',standard:'Price',details:'Details for',closeProduct:'Close details',
+    ingredients:'Confirmed ingredients',recipeNote:'Remaining recipe details are to be confirmed.',
+    detailsPending:'Contact the restaurant on WhatsApp for ingredient details or allergy questions.',
+    extras:'Extras',cheeseExtra:'Extra cheese',pattyExtra:'Extra patty',
+    restaurantPhoto:'Catch Burger’s illuminated storefront and warm interior',photoCaption:'CATCH AFTER DARK',
+    nightTitle:'Bring your people.<br><em>Make it a Catch night.</em>',
+    contactIntro:'For orders and questions, talk to us on WhatsApp.',whatsapp:'Order via WhatsApp',
+    contactNote:'Opens WhatsApp. Send your message there.',footerNote:'The menu · Order directly with the restaurant on WhatsApp',
+    greeting:'Hello, I’d like to order from Catch Burger.'
+  }
 };
-const $=s=>document.querySelector(s),productById=id=>menu.find(p=>p.id===id),bag=$('#cart'),productDialog=$('#productDialog'),checkout=$('#checkout'),motionQuery=matchMedia('(prefers-reduced-motion: reduce)');
-let lang='ar',cart=[],selected=null,category='mains',toastTimer,reduced=motionQuery.matches;
-try{if(localStorage.getItem('catch-language')==='en')lang='en'}catch{}
-const t=key=>copy[lang][key],nameOf=p=>lang==='ar'?p.ar:p.name,otherName=p=>lang==='ar'?p.name:p.ar,money=n=>n.toFixed(0)+' '+t('currency'),priceHTML=n=>'<bdi>'+money(n)+'</bdi>',addonPrices={cheese:2,meat:6};
-function validLine(line){if(!line||typeof line!=='object')return false;const p=productById(line.id);return p&&Number.isInteger(line.size)&&line.size>=0&&line.size<p.prices.length&&Number.isInteger(line.qty)&&line.qty>0&&line.qty<=99&&Array.isArray(line.addons)&&line.addons.every(a=>Object.hasOwn(addonPrices,a))&&new Set(line.addons).size===line.addons.length&&(p.category==='mains'||line.addons.length===0)}
-try{const saved=JSON.parse(localStorage.getItem('catch-order-v2')||'[]');if(Array.isArray(saved))cart=saved.filter(validLine)}catch{}
-function unit(line){return productById(line.id).prices[line.size]+line.addons.reduce((s,a)=>s+addonPrices[a],0)}
-function total(){return cart.reduce((s,l)=>s+unit(l)*l.qty,0)}
-function lineKey(line){return line.id+'-'+line.size+'-'+line.addons.slice().sort().join(',')}
-function imageHTML(p,eager=false){const heights={catchsauce:391,honey:391,cheesesauce:391,bbq:395,tartar:395,softdrink:395,orange:468,water:468,double:468,cheeseburger:449},w=p.id==='cheeseburger'?449:418,h=heights[p.id]||418;return '<img class="food-image" src="assets/menu/'+p.id+'.webp" alt="'+nameOf(p)+'" width="'+w+'" height="'+h+'" loading="'+(eager?'eager':'lazy')+'" decoding="async">'}
-function sizeName(p,size){return p.prices.length>1?t(size?'large':'small'):t('standard')}
-function details(line){const p=productById(line.id);return sizeName(p,line.size)+(line.addons.length?' · '+line.addons.map(t).join('، '):'')}
-function persist(){try{localStorage.setItem('catch-order-v2',JSON.stringify(cart))}catch{}renderCart()}
-function notify(message){$('#toast').textContent=message;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3200)}
-function renderMenu(next=category){category=next;$('#products').dataset.category=category;$('#products').innerHTML=menu.filter(p=>p.category===category).map((p,i)=>'<button class="menu-card" data-product="'+p.id+'" aria-label="'+t('choose')+' '+nameOf(p)+'" style="--delay:'+i*.085+'s"><span class="photo-frame">'+imageHTML(p)+'<span class="photo-edge" aria-hidden="true"></span></span><span class="card-info"><span><span class="card-name">'+nameOf(p)+'</span><span class="card-ar" lang="'+(lang==='ar'?'en':'ar')+'" dir="'+(lang==='ar'?'ltr':'rtl')+'">'+otherName(p)+'</span></span><span class="card-price"><span><bdi>'+p.prices.join(' / ')+'</bdi><small>'+t('currency')+'</small></span><span class="card-arrow" aria-hidden="true">↗</span></span></span></button>').join('');document.querySelectorAll('.menu-card').forEach(card=>revealObserver.observe(card));moveTabIndicator()}
-const confirmedIngredients={
-cheeseburger:{ar:['خبز بالسمسم','قطعة برجر','جبن','مخلل'],en:['Sesame bun','Burger patty','Cheese','Pickles']},
-double:{ar:['خبز برجر','قطعتا برجر','جبن'],en:['Burger bun','Two burger patties','Cheese']},
-crispy:{ar:['خبز برجر','دجاج مقرمش'],en:['Burger bun','Crispy chicken']},
-hotdog:{ar:['خبز هوت دوغ','نقانق'],en:['Hot dog bun','Sausage']}
+const confirmedIngredients = {
+  cheeseburger:{ar:['خبز بالسمسم','قطعة برجر','جبن','مخلل'],en:['Sesame bun','Burger patty','Cheese','Pickles']},
+  double:{ar:['خبز برجر','قطعتا برجر','جبن'],en:['Burger bun','Two burger patties','Cheese']},
+  crispy:{ar:['خبز برجر','دجاج مقرمش'],en:['Burger bun','Crispy chicken']},
+  hotdog:{ar:['خبز هوت دوغ','نقانق'],en:['Hot dog bun','Sausage']}
 };
-function ingredientHTML(p){const list=confirmedIngredients[p.id];if(!list)return '';return '<section class="ingredients"><h3>'+t('ingredients')+'</h3><p>'+list[lang].join(lang==='ar'?'، ':', ')+'</p><small>'+t('recipeNote')+'</small></section>'}
-function renderProduct(){if(!selected)return;const p=productById(selected.id);$('#productContent').innerHTML='<div class="product-media"><div class="product-preview">'+imageHTML(p,true)+'</div>'+ingredientHTML(p)+'</div><div class="product-body"><span class="eyebrow">'+t('brand')+'</span><h2 id="productTitle">'+nameOf(p)+'</h2><span class="arabic-name" lang="'+(lang==='ar'?'en':'ar')+'" dir="'+(lang==='ar'?'ltr':'rtl')+'">'+otherName(p)+'</span>'+(p.prices.length>1?'<div class="size-options" role="group" aria-label="'+t('chooseSize')+'">'+p.prices.map((v,i)=>'<button class="size-option '+(i===selected.size?'selected':'')+'" data-size="'+i+'" aria-pressed="'+(i===selected.size)+'">'+sizeName(p,i)+'<b>'+priceHTML(v)+'</b></button>').join('')+'</div>':'<div class="item-price">'+priceHTML(p.prices[0])+'</div>')+(p.category==='mains'?'<div class="addons"><span class="eyebrow">'+t('extras')+'</span>'+(['cheeseburger','double'].includes(p.id)?['cheese','meat']:['cheese']).map(a=>'<label><input type="checkbox" value="'+a+'" data-addon '+(selected.addons.includes(a)?'checked':'')+'> '+t(a)+' <b><bdi>+'+money(addonPrices[a])+'</bdi></b></label>').join('')+'</div>':'')+'<button class="primary" id="addSelected"><span>'+t('add')+'</span><span>'+priceHTML(unit(selected))+' ↗</span></button></div>'}
-function openProduct(id){if(!productById(id))return;selected={id,size:0,addons:[],qty:1};renderProduct();productDialog.showModal()}
-function animateToBag(p,startRect){const target=$('#openBag'),targetRect=target.getBoundingClientRect();target.classList.remove('bag-arrived');if(reduced||!startRect||!startRect.width){if(!bag.open)bag.showModal();return}const flight=document.createElement('img');flight.src='assets/menu/'+p.id+'.webp';flight.alt='';flight.className='cart-flight';const size=74,x=startRect.left+startRect.width/2-size/2,y=startRect.top+startRect.height/2-size/2;flight.style.left=x+'px';flight.style.top=y+'px';document.body.append(flight);const dx=targetRect.left+targetRect.width/2-(x+size/2),dy=targetRect.top+targetRect.height/2-(y+size/2);flight.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+dx*.45+'px,'+(dy*.6-65)+'px) scale(.74)',opacity:.95,offset:.55},{transform:'translate('+dx+'px,'+dy+'px) scale(.12)',opacity:0}],{duration:720,easing:'cubic-bezier(.23,.65,.3,1)'}).finished.catch(()=>{}).then(()=>{flight.remove();target.classList.add('bag-arrived');if(!bag.open&&!checkout.open&&!productDialog.open)bag.showModal()})}
-function addSelected(){if(!selected)return;const p=productById(selected.id),photo=document.querySelector('.product-preview img'),start=photo?.getBoundingClientRect(),key=lineKey(selected),existing=cart.find(l=>lineKey(l)===key);if(existing&&existing.qty>=99){notify(t('maximum'));return}if(existing)existing.qty++;else cart.push({...selected,addons:[...selected.addons]});persist();productDialog.close();animateToBag(p,start)}
-function renderCart(){$('#count').textContent=cart.reduce((s,l)=>s+l.qty,0);$('#cartItems').innerHTML=cart.length?cart.map((line,i)=>{const p=productById(line.id);return '<article class="cart-row"><div class="cart-thumb">'+imageHTML(p,true)+'</div><div class="cart-details"><h3>'+nameOf(p)+'</h3><span class="cart-size">'+details(line)+'</span><div class="cart-prices"><small>'+priceHTML(unit(line))+' '+t('each')+'</small><strong>'+priceHTML(unit(line)*line.qty)+'</strong></div><div class="cart-controls"><div class="quantity"><button data-change="'+i+'" data-delta="-1" aria-label="'+t('minusOne')+' '+nameOf(p)+'">−</button><span>'+line.qty+'</span><button data-change="'+i+'" data-delta="1" aria-label="'+t('plusOne')+' '+nameOf(p)+'" '+(line.qty>=99?'disabled':'')+'>+</button></div><button data-remove="'+i+'" class="remove" aria-label="'+t('removeItem')+' '+nameOf(p)+'">'+t('remove')+'</button></div></div></article>'}).join(''):'<div class="empty">'+t('empty')+'<br><button class="primary" id="browse"><span>'+t('browse')+'</span><span>↗</span></button></div>';$('#cartBottom').innerHTML=cart.length?'<div class="total"><span>'+t('subtotal')+'</span><strong>'+priceHTML(total())+'</strong></div><button class="primary" id="checkoutButton"><span>'+t('review')+'</span><span>↗</span></button><p class="preview-message">'+t('cartNotice')+'</p>':''}
-function renderOrder(){$('#orderSummary').innerHTML=cart.map(line=>'<div class="order-summary-row"><div><bdi>'+line.qty+' ×</bdi> '+nameOf(productById(line.id))+'<br><span>'+details(line)+'</span></div><strong>'+priceHTML(unit(line)*line.qty)+'</strong></div>').join('')+'<div class="total"><span>'+t('orderTotal')+'</span><strong>'+priceHTML(total())+'</strong></div>'}
-function openCheckout(){if(!cart.length)return;bag.close();renderOrder();checkout.showModal()}
-function moveTabIndicator(){requestAnimationFrame(()=>{const tab=document.querySelector('[data-filter].active'),bar=$('.menu-tabs'),indicator=$('.tab-indicator');if(tab&&indicator){indicator.style.width=tab.offsetWidth+'px';indicator.style.left=tab.offsetLeft+'px'}})}
-function setLanguage(next){lang=next;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.title=lang==='ar'?'كاتش برجر | القائمة':'Catch Burger | Menu';document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));document.querySelectorAll('[data-i18n-html]').forEach(el=>el.innerHTML=t(el.dataset.i18nHtml));document.querySelectorAll('[data-i18n-label]').forEach(el=>el.setAttribute('aria-label',t(el.dataset.i18nLabel)));document.querySelectorAll('[data-i18n-alt]').forEach(el=>el.alt=t(el.dataset.i18nAlt));document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>el.placeholder=t(el.dataset.i18nPlaceholder));document.querySelectorAll('[data-language]').forEach(button=>{const active=button.dataset.language===lang;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});$('#orderForm input[name=name]').dir=lang==='ar'?'rtl':'ltr';renderMenu();renderCart();if(productDialog.open)renderProduct();if(checkout.open)renderOrder();document.body.classList.remove('language-enter');void document.body.offsetWidth;document.body.classList.add('language-enter')}
-document.querySelectorAll('[data-language]').forEach(button=>button.onclick=()=>{setLanguage(button.dataset.language);try{localStorage.setItem('catch-language',lang)}catch{}});
-document.addEventListener('click',e=>{const product=e.target.closest('[data-product]');if(product)openProduct(product.dataset.product);const size=e.target.closest('[data-size]');if(size&&selected){selected.size=Number(size.dataset.size);document.querySelectorAll('[data-size]').forEach(b=>{b.classList.toggle('selected',b===size);b.setAttribute('aria-pressed',String(b===size))});$('#addSelected>span:last-child').innerHTML=priceHTML(unit(selected))+' ↗'}if(e.target.closest('#addSelected'))addSelected();const change=e.target.closest('[data-change]');if(change){const i=Number(change.dataset.change);if(cart[i]){cart[i].qty=Math.min(99,cart[i].qty+Number(change.dataset.delta));if(cart[i].qty<1)cart.splice(i,1);persist()}}const remove=e.target.closest('[data-remove]');if(remove){cart.splice(Number(remove.dataset.remove),1);persist()}if(e.target.closest('#browse')){bag.close();$('#menu').scrollIntoView({behavior:reduced?'instant':'smooth'})}if(e.target.closest('#checkoutButton'))openCheckout()});
-document.addEventListener('change',e=>{if(e.target.matches('[data-addon]')&&selected){selected.addons=Array.from(document.querySelectorAll('[data-addon]:checked')).map(n=>n.value);$('#addSelected>span:last-child').innerHTML=priceHTML(unit(selected))+' ↗'}});
-function changeCategory(next){if(next===category)return;document.querySelectorAll('[data-filter]').forEach(a=>{a.classList.toggle('active',a.dataset.filter===next);a.setAttribute('aria-pressed',String(a.dataset.filter===next))});const update=()=>{renderMenu(next);document.querySelectorAll('.menu-card').forEach(card=>card.classList.add('visible'))};if(!reduced&&document.startViewTransition){try{const transition=document.startViewTransition(update);transition.finished.catch(()=>{});return}catch{}}update();if(!reduced)$('#products').animate([{opacity:.15,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:460,easing:'cubic-bezier(.2,.8,.2,1)'})}
-document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>changeCategory(b.dataset.filter));
-if(matchMedia('(pointer:fine)').matches){$('#products').addEventListener('pointermove',event=>{const card=event.target.closest('.menu-card');if(!card||reduced)return;const r=card.querySelector('.photo-frame').getBoundingClientRect(),px=Math.max(0,Math.min(1,(event.clientX-r.left)/r.width)),py=Math.max(0,Math.min(1,(event.clientY-r.top)/r.height));card.style.setProperty('--tilt-x',(0.5-py)*5+'deg');card.style.setProperty('--tilt-y',(px-0.5)*6+'deg');card.style.setProperty('--shine-x',px*100+'%');card.style.setProperty('--shine-y',py*100+'%')});$('#products').addEventListener('pointerout',event=>{const card=event.target.closest('.menu-card');if(card&&!card.contains(event.relatedTarget)){card.style.setProperty('--tilt-x','0deg');card.style.setProperty('--tilt-y','0deg')}})}
+const $ = selector => document.querySelector(selector);
+const productDialog = $('#productDialog');
+const motionQuery = matchMedia('(prefers-reduced-motion: reduce)');
+let lang='ar', category='mains', selected=null, categoryChange=0;
+try { if(localStorage.getItem('catch-language')==='en') lang='en'; } catch {}
+const t = key => copy[lang][key];
+const nameOf = product => lang==='ar'?product.ar:product.name;
+const otherName = product => lang==='ar'?product.name:product.ar;
+const priceLabel = (product,index) => product.prices.length>1?t(index?'large':'small'):t('standard');
 
-$('#openBag').onclick=()=>bag.showModal();$('#closeBag').onclick=()=>bag.close();$('#closeProduct').onclick=()=>productDialog.close();$('#closeCheckout').onclick=()=>checkout.close();
-document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}}));
-$('#orderForm').onsubmit=e=>{e.preventDefault();if(!cart.length)return;checkout.close();cart=[];persist();e.target.reset();notify(t('completed'))};
-function setMotion(){reduced=motionQuery.matches;document.body.classList.toggle('reduced',reduced);document.documentElement.style.scrollBehavior=reduced?'auto':'';document.dispatchEvent(new CustomEvent('catch-motion',{detail:{reduced}}))}setMotion();motionQuery.addEventListener('change',setMotion);
-const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>revealObserver.observe(e.target||e));setLanguage(lang);
-let scrollFrame=0;function updateScroll(){scrollFrame=0;const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;document.body.classList.toggle('nav-scrolled',y>24);document.documentElement.style.setProperty('--page-progress',max?y/max:0);const hero=$('.hero'),night=$('.night-image'),rect=night.getBoundingClientRect();if(!reduced){hero.style.setProperty('--hero-scroll',Math.min(y/innerHeight,1));if(rect.bottom>0&&rect.top<innerHeight)night.style.setProperty('--parallax',((innerHeight/2-(rect.top+rect.height/2))*.055)+'px')}}addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateScroll)},{passive:true});addEventListener('resize',()=>{moveTabIndicator();updateScroll()});updateScroll();if(document.fonts)document.fonts.ready.then(moveTabIndicator);
+function priceMarkup(product,detail=false) {
+  return product.prices.map((price,index) => detail
+    ? '<div class="detail-price"><span>'+priceLabel(product,index)+'</span><bdi>'+price+' <small>'+t('currency')+'</small></bdi></div>'
+    : '<span class="menu-price"><span class="price-label">'+priceLabel(product,index)+'</span><strong dir="ltr">'+price+'</strong><small>'+t('currency')+'</small></span>'
+  ).join('');
+}
+function renderMenu() {
+  const products=menu.filter(product=>product.category===category);
+  $('#products').dataset.category=category;
+  $('#products').innerHTML=products.map((product,index)=>
+    '<div class="menu-entry" role="listitem" style="--index:'+index+'"><button class="menu-card" data-product="'+product.id+'" aria-label="'+t('details')+' '+nameOf(product)+'">'+
+    '<span class="item-index" aria-hidden="true">'+String(index+1).padStart(2,'0')+'</span>'+
+    '<span><span class="card-name">'+nameOf(product)+'</span><span class="card-secondary" lang="'+(lang==='ar'?'en':'ar')+'" dir="'+(lang==='ar'?'ltr':'rtl')+'">'+otherName(product)+'</span></span>'+
+    '<span class="card-prices">'+priceMarkup(product)+'</span><span class="card-chevron" aria-hidden="true">↗</span></button></div>'
+  ).join('');
+  moveTabIndicator();
+}
+function renderProduct() {
+  const product=menu.find(item=>item.id===selected);
+  if(!product) return;
+  const ingredients=confirmedIngredients[product.id];
+  $('#productContent').innerHTML='<span class="eyebrow">'+t('brand')+'</span><h2 id="productTitle">'+nameOf(product)+'</h2>'+
+    '<span class="detail-secondary" lang="'+(lang==='ar'?'en':'ar')+'" dir="'+(lang==='ar'?'ltr':'rtl')+'">'+otherName(product)+'</span>'+
+    '<div class="detail-prices '+(product.prices.length===1?'single-price':'')+'">'+priceMarkup(product,true)+'</div>'+
+    (ingredients?'<section class="ingredients"><h3>'+t('ingredients')+'</h3><p>'+ingredients[lang].join(lang==='ar'?'، ':', ')+'</p><small>'+t('recipeNote')+'</small></section>':'')+
+    '<p class="detail-note">'+t('detailsPending')+'</p>';
+}
+function moveTabIndicator() {
+  requestAnimationFrame(()=>{
+    const active=document.querySelector('[data-filter].active'),indicator=$('.tab-indicator');
+    if(active&&indicator) {indicator.style.width=active.offsetWidth+'px';indicator.style.left=active.offsetLeft+'px';}
+  });
+}
+async function changeCategory(next) {
+  if(next===category) return;
+  const change=++categoryChange;
+  category=next;
+  document.querySelectorAll('[data-filter]').forEach(button=>{
+    const active=button.dataset.filter===next;
+    button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+  });
+  moveTabIndicator();
+  const catalog=$('#products');
+  if(!motionQuery.matches) {
+    await catalog.animate([{opacity:1},{opacity:0}],{duration:130,easing:'ease'}).finished.catch(()=>{});
+  }
+  if(change!==categoryChange) return;
+  catalog.classList.remove('catalog-enter');
+  renderMenu();
+  void catalog.offsetWidth;
+  catalog.classList.add('catalog-enter');
+}
+function setLanguage(next) {
+  lang=next;
+  categoryChange++;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.title=lang==='ar'?'كاتش برجر | القائمة':'Catch Burger | Menu';
+  document.querySelectorAll('[data-i18n]').forEach(element=>element.textContent=t(element.dataset.i18n));
+  document.querySelectorAll('[data-i18n-html]').forEach(element=>element.innerHTML=t(element.dataset.i18nHtml));
+  document.querySelectorAll('[data-i18n-label]').forEach(element=>element.setAttribute('aria-label',t(element.dataset.i18nLabel)));
+  document.querySelectorAll('[data-i18n-alt]').forEach(element=>element.alt=t(element.dataset.i18nAlt));
+  document.querySelectorAll('[data-language]').forEach(button=>{
+    const active=button.dataset.language===lang;
+    button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+  });
+  $('#whatsappLink').href='https://wa.me/966508868265?text='+encodeURIComponent(t('greeting'));
+  renderMenu();
+  if(productDialog.open)renderProduct();
+}
+document.querySelectorAll('[data-language]').forEach(button=>button.addEventListener('click',()=>{
+  setLanguage(button.dataset.language);
+  try {localStorage.setItem('catch-language',lang);} catch {}
+}));
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>changeCategory(button.dataset.filter)));
+$('#products').addEventListener('click',event=>{
+  const button=event.target.closest('[data-product]');
+  if(!button)return;
+  selected=button.dataset.product;renderProduct();productDialog.showModal();
+});
+$('#closeProduct').addEventListener('click',()=>productDialog.close());
+productDialog.addEventListener('click',event=>{
+  if(event.target!==productDialog)return;
+  const rect=productDialog.getBoundingClientRect();
+  if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)productDialog.close();
+});
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}
+}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(element=>revealObserver.observe(element));
+function updateHeader(){document.body.classList.toggle('nav-scrolled',scrollY>24);}
+addEventListener('scroll',updateHeader,{passive:true});
+addEventListener('resize',moveTabIndicator);
+setLanguage(lang);updateHeader();
+if(document.fonts)document.fonts.ready.then(moveTabIndicator);
