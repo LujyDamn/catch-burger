@@ -1,35 +1,31 @@
 # Catch Burger / كاتش برجر
 
-Arabic-first restaurant menu with an English option. Visitors browse dishes, sizes, prices and confirmed ingredient details, then contact the restaurant through WhatsApp.
-
-## Run locally
-
-Serve this directory with a static HTTP server. No build step or package installation is required.
+Arabic-first restaurant menu with an English option, the opening and looping photographic burger animation, and the original picture-card menu.
 
 ## Live website
 
 https://lujydamn.github.io/catch-burger/
 
-GitHub Pages publishes the root of the `main` branch. Pushes to `main` update the site; `.nojekyll` keeps the static files intact.
+GitHub Pages publishes the root of main. Pushes to main update the site.
+
+## Local preview
+
+Serve this folder with any static HTTP server. There is no build step.
 
 ## Features
 
-- Original Catch cheeseburger and storefront photographs, displayed without image animation.
-- Four menu categories with readable prices and labelled small/large sizes.
-- Read-only dish details with confirmed ingredients.
-- Arabic by default, with a saved English language preference.
-- Category transitions, text reveals and detail-panel animation that respect reduced motion.
-- WhatsApp contact link to +966 50 886 8265, with a localized greeting. The customer sends the message in WhatsApp.
+- Automatic burger-layer animation, with pointer and tap interaction.
+- Photographic menu cards, category transitions and ingredient details.
+- Prices in SAR. Main dishes have small and large sizes.
+- Read-only dish details, without a bag, checkout, add-ons selection or payment form.
+- WhatsApp contact at +966 50 886 8265. Visitors send their message from WhatsApp.
+- Arabic by default, a saved English preference and reduced-motion support.
 
-There is no bag, checkout, quantity selection, payment form or on-site order submission.
+## Files
 
-## Editing
+- index.html: page structure.
+- style.css: the restored visual design and responsive styles.
+- app.js: bilingual text, menu, prices, details and WhatsApp link.
+- hero.js: automatic and interactive burger animation.
 
-- `index.html`: page structure and initial Arabic content.
-- `style.css`: responsive layout and restrained motion.
-- `app.js`: bilingual copy, menu prices, details and WhatsApp link.
-- Prices are in SAR. Main dishes have two sizes, not meal/burger-only prices.
-- Confirm full recipes with the restaurant before extending ingredient lists.
-- Fonts load from Google Fonts, with system fallbacks.
-
-See [ASSETS.md](ASSETS.md) for image provenance.
+Ingredient lists contain only confirmed details and remain partial. Google Fonts load externally with system fallbacks. See ASSETS.md for image provenance.
