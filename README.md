@@ -1,31 +1,29 @@
-# Catch Burger / كاتش برجر
+# EMBER / جمر
 
-Arabic-first restaurant menu with an English option, the opening and looping photographic burger animation, and the original picture-card menu.
+Arabic-first restaurant concept with an English option, an opening and repeating burger animation, and a picture-card menu.
 
-## Live website
+The existing layout, colors, typography, responsive styling and animations are retained. The former restaurant's visible identity, photographs and live contact number have been replaced or removed.
 
-https://lujydamn.github.io/catch-burger/
+## Hosting
 
-GitHub Pages publishes the root of main. Pushes to main update the site.
+The existing Cloudflare Pages project publishes this repository's main branch automatically. The repository and hosting identifiers are retained for deployment continuity.
 
 ## Local preview
 
-Serve this folder with any static HTTP server. There is no build step.
+Serve this folder with a static HTTP server. No build step is required.
 
 ## Features
 
-- Automatic burger-layer animation, with pointer and tap interaction.
-- Photographic menu cards, category transitions and ingredient details.
-- Prices in SAR. Main dishes have small and large sizes.
-- Read-only dish details, without a bag, checkout, add-ons selection or payment form.
-- WhatsApp contact at +966 50 886 8265. Visitors send their message from WhatsApp.
-- Arabic by default, a saved English preference and reduced-motion support.
+- Automatic and interactive burger-layer animation.
+- Picture menu, category transitions and read-only ingredient details.
+- Sample menu prices in SAR, including small and large main dishes.
+- Arabic by default, an English language option and reduced-motion support.
+- No cart or checkout. Add a verified contact destination before using this concept for a real business.
 
 ## Files
 
 - index.html: page structure.
-- style.css: the restored visual design and responsive styles.
-- app.js: bilingual text, menu, prices, details and WhatsApp link.
-- hero.js: automatic and interactive burger animation.
-
-Ingredient lists contain only confirmed details and remain partial. Google Fonts load externally with system fallbacks. See ASSETS.md for image provenance.
+- style.css: established responsive design.
+- app.js: menu, prices, details and bilingual text.
+- hero.js: unchanged burger animation.
+- ASSETS.md: image provenance, generation mode and prompts.

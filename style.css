@@ -50,3 +50,6 @@ dialog{color:var(--cream);background:#1b1814;border:1px solid #514735;padding:30
 /* Keep the existing design; contact replaces the order bag. */
 .contact-button{display:flex;gap:10px;align-items:center;white-space:nowrap;font-size:12px;line-height:1.9;min-height:42px;padding:10px 0 10px 16px;transition:color .3s}.contact-button svg{width:20px;height:22px;fill:none;stroke:var(--cream);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}.contact-button:hover,.footer-contact:hover{color:var(--accent)}.contact-button:hover svg{stroke:var(--accent)}.footer-contact{font:400 10px "DM Sans",sans-serif;letter-spacing:1px;color:var(--accent)}.size-prices .size-option{text-align:start;cursor:default}.product-body h2{margin-top:12px}
 @media(max-width:600px){.contact-button{grid-area:bag;justify-self:end;min-height:30px;padding:4px 0;font-size:11px;gap:8px}.contact-button svg{width:18px;height:20px}.footer-contact{display:inline-block;margin-top:5px}}
+
+/* Replacement wordmark and photograph retain their original frames. */
+.logo img{filter:none!important}.night-note .night-image img{aspect-ratio:357/589;object-fit:cover}
