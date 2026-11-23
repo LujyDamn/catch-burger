@@ -2,11 +2,13 @@
 
 Arabic-first restaurant concept with an English option, an opening and repeating burger animation, and a picture-card menu.
 
-The existing layout, colors, typography, responsive styling and animations are retained. The former restaurant's visible identity, photographs and live contact number have been replaced or removed.
+The existing layout, colors, typography, responsive styling and animations are retained. The former restaurant's visible identity and photographs have been replaced.
 
 ## Hosting
 
-The existing Cloudflare Pages project publishes this repository's main branch automatically. The repository and hosting identifiers are retained for deployment continuity.
+Live site: https://ember-grill-menu.pages.dev/
+
+The Cloudflare Pages project `ember-grill-menu` publishes this repository's main branch automatically. No build step is required.
 
 ## Local preview
 
@@ -18,7 +20,8 @@ Serve this folder with a static HTTP server. No build step is required.
 - Picture menu, category transitions and read-only ingredient details.
 - Sample menu prices in SAR, including small and large main dishes.
 - Arabic by default, an English language option and reduced-motion support.
-- No cart or checkout. Add a verified contact destination before using this concept for a real business.
+- No cart or checkout. WhatsApp contact: +966 57 944 2009.
+- Licensed real restaurant photograph in a straight responsive frame; provenance is in ASSETS.md.
 
 ## Files
 

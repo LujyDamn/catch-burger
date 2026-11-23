@@ -35,7 +35,7 @@ const copy={
     "sauces": "الصوصات",
     "drinks": "المشروبات",
     "currency": "ر.س",
-    "restaurantPhoto": "أجواء مطعم دافئة بإضاءة كهرمانية",
+    "restaurantPhoto": "مطعم بإضاءة طبيعية وطاولات خشبية",
     "nightTitle": "البرجر من جمر،<br><em>واللّمة عليكم.</em>",
     "closeProduct": "إغلاق المنتج",
     "small": "صغير",
@@ -45,7 +45,10 @@ const copy={
     "chooseSize": "الأحجام والأسعار",
     "languageLabel": "لغة الموقع",
     "ingredients": "المكونات المؤكدة",
-    "recipeNote": "باقي تفاصيل الوصفة قيد التأكيد."
+    "recipeNote": "باقي تفاصيل الوصفة قيد التأكيد.",
+    "whatsapp": "واتساب",
+    "whatsappLabel": "تواصل عبر واتساب",
+    "greeting": "السلام عليكم، حاب أطلب من جمر."
   },
   "en": {
     "home": "EMBER home",
@@ -62,7 +65,7 @@ const copy={
     "sauces": "Sauces",
     "drinks": "Drinks",
     "currency": "SAR",
-    "restaurantPhoto": "Warm restaurant interior with amber lighting",
+    "restaurantPhoto": "Restaurant interior with natural light and wooden tables",
     "nightTitle": "Bring your people.<br><em>Make it an Ember night.</em>",
     "closeProduct": "Close product",
     "small": "Small",
@@ -72,7 +75,10 @@ const copy={
     "chooseSize": "Sizes and prices",
     "languageLabel": "Site language",
     "ingredients": "Confirmed ingredients",
-    "recipeNote": "Remaining recipe details are to be confirmed."
+    "recipeNote": "Remaining recipe details are to be confirmed.",
+    "whatsapp": "WhatsApp",
+    "whatsappLabel": "Contact on WhatsApp",
+    "greeting": "Hello, I’d like to order from Ember."
   }
 };
 const $=s=>document.querySelector(s),productById=id=>menu.find(p=>p.id===id),productDialog=$('#productDialog'),motionQuery=matchMedia('(prefers-reduced-motion: reduce)');
@@ -81,7 +87,7 @@ try{if(localStorage.getItem('restaurant-language')==='en')lang='en'}catch{}
 const t=key=>copy[lang][key],nameOf=p=>lang==='ar'?p.ar:p.name,otherName=p=>lang==='ar'?p.name:p.ar,money=n=>n.toFixed(0)+' '+t('currency'),priceHTML=n=>'<bdi>'+money(n)+'</bdi>';
 function imageHTML(p,eager=false){const heights={housesauce:391,honey:391,cheesesauce:391,bbq:395,tartar:395,softdrink:395,orange:468,water:468,double:468,cheeseburger:449},w=p.id==='cheeseburger'?449:418,h=heights[p.id]||418;return '<img class="food-image" src="assets/menu/'+p.id+'.webp" alt="'+nameOf(p)+'" width="'+w+'" height="'+h+'" loading="'+(eager?'eager':'lazy')+'" decoding="async">'}
 function sizeName(p,size){return p.prices.length>1?t(size?'large':'small'):t('standard')}
-function renderMenu(next=category){category=next;$('#products').dataset.category=category;$('#products').innerHTML=menu.filter(p=>p.category===category).map((p,i)=>'<button class="menu-card" data-product="'+p.id+'" aria-label="'+t('choose')+' '+nameOf(p)+'" style="--delay:'+i*.085+'s"><span class="photo-frame">'+imageHTML(p)+'<span class="photo-edge" aria-hidden="true"></span></span><span class="card-info"><span><span class="card-name">'+nameOf(p)+'</span><span class="card-ar" lang="'+(lang==='ar'?'en':'ar')+'" dir="'+(lang==='ar'?'ltr':'rtl')+'">'+otherName(p)+'</span></span><span class="card-price"><span><bdi>'+p.prices.join(' / ')+'</bdi><small>'+t('currency')+'</small></span><span class="card-arrow" aria-hidden="true">↗</span></span></span></button>').join('');document.querySelectorAll('.menu-card').forEach(card=>revealObserver.observe(card));moveTabIndicator()}
+function renderMenu(next=category){category=next;$('#products').dataset.category=category;$('#products').innerHTML=menu.filter(p=>p.category===category).map((p,i)=>'<button class="menu-card" data-product="'+p.id+'" aria-label="'+t('choose')+' '+nameOf(p)+'" style="--delay:'+i*.085+'s"><span class="photo-frame">'+imageHTML(p)+'<span class="photo-edge" aria-hidden="true"></span></span><span class="card-info"><span><span class="card-name">'+nameOf(p)+'</span><span class="card-ar" lang="'+(lang==='ar'?'en':'ar')+'" dir="'+(lang==='ar'?'ltr':'rtl')+'">'+otherName(p)+'</span></span><span class="card-price"><span><bdi>'+p.prices.join(' / ')+'</bdi><small>'+t('currency')+'</small></span></span></span></button>').join('');document.querySelectorAll('.menu-card').forEach(card=>revealObserver.observe(card));moveTabIndicator()}
 const confirmedIngredients={
 cheeseburger:{ar:['خبز بالسمسم','قطعة برجر','جبن','مخلل'],en:['Sesame bun','Burger patty','Cheese','Pickles']},
 double:{ar:['خبز برجر','قطعتا برجر','جبن'],en:['Burger bun','Two burger patties','Cheese']},
@@ -92,7 +98,7 @@ function ingredientHTML(p){const list=confirmedIngredients[p.id];if(!list)return
 function renderProduct(){if(!selected)return;const p=productById(selected.id);$('#productContent').innerHTML='<div class="product-media"><div class="product-preview">'+imageHTML(p,true)+'</div>'+ingredientHTML(p)+'</div><div class="product-body"><h2 id="productTitle">'+nameOf(p)+'</h2><span class="arabic-name" lang="'+(lang==='ar'?'en':'ar')+'" dir="'+(lang==='ar'?'ltr':'rtl')+'">'+otherName(p)+'</span>'+(p.prices.length>1?'<div class="size-options size-prices" role="group" aria-label="'+t('chooseSize')+'">'+p.prices.map((v,i)=>'<div class="size-option">'+sizeName(p,i)+'<b>'+priceHTML(v)+'</b></div>').join('')+'</div>':'<div class="item-price">'+priceHTML(p.prices[0])+'</div>')+'</div>'}
 function openProduct(id){if(!productById(id))return;selected={id};renderProduct();productDialog.showModal()}
 function moveTabIndicator(){requestAnimationFrame(()=>{const tab=document.querySelector('[data-filter].active'),bar=$('.menu-tabs'),indicator=$('.tab-indicator');if(tab&&indicator){indicator.style.width=tab.offsetWidth+'px';indicator.style.left=tab.offsetLeft+'px'}})}
-function setLanguage(next){lang=next;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.title=lang==='ar'?'جمر | القائمة':'EMBER | Menu';document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));document.querySelectorAll('[data-i18n-html]').forEach(el=>el.innerHTML=t(el.dataset.i18nHtml));document.querySelectorAll('[data-i18n-label]').forEach(el=>el.setAttribute('aria-label',t(el.dataset.i18nLabel)));document.querySelectorAll('[data-i18n-alt]').forEach(el=>el.alt=t(el.dataset.i18nAlt));document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>el.placeholder=t(el.dataset.i18nPlaceholder));document.querySelectorAll('[data-language]').forEach(button=>{const active=button.dataset.language===lang;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});renderMenu();if(productDialog.open)renderProduct();document.body.classList.remove('language-enter');void document.body.offsetWidth;document.body.classList.add('language-enter')}
+function setLanguage(next){lang=next;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.title=lang==='ar'?'جمر | القائمة':'EMBER | Menu';document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));document.querySelectorAll('[data-i18n-html]').forEach(el=>el.innerHTML=t(el.dataset.i18nHtml));document.querySelectorAll('[data-i18n-label]').forEach(el=>el.setAttribute('aria-label',t(el.dataset.i18nLabel)));document.querySelectorAll('[data-i18n-alt]').forEach(el=>el.alt=t(el.dataset.i18nAlt));document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>el.placeholder=t(el.dataset.i18nPlaceholder));document.querySelectorAll('[data-language]').forEach(button=>{const active=button.dataset.language===lang;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});$('#whatsappLink').href='https://wa.me/966579442009?text='+encodeURIComponent(t('greeting'));document.querySelectorAll('[data-whatsapp]').forEach(link=>link.href=$('#whatsappLink').href);renderMenu();if(productDialog.open)renderProduct();document.body.classList.remove('language-enter');void document.body.offsetWidth;document.body.classList.add('language-enter')}
 document.querySelectorAll('[data-language]').forEach(button=>button.onclick=()=>{setLanguage(button.dataset.language);try{localStorage.setItem('restaurant-language',lang)}catch{}});
 document.addEventListener('click',e=>{const product=e.target.closest('[data-product]');if(product)openProduct(product.dataset.product)})
 function changeCategory(next){if(next===category)return;document.querySelectorAll('[data-filter]').forEach(a=>{a.classList.toggle('active',a.dataset.filter===next);a.setAttribute('aria-pressed',String(a.dataset.filter===next))});const update=()=>{renderMenu(next);document.querySelectorAll('.menu-card').forEach(card=>card.classList.add('visible'))};if(!reduced&&document.startViewTransition){try{const transition=document.startViewTransition(update);transition.finished.catch(()=>{});return}catch{}}update();if(!reduced)$('#products').animate([{opacity:.15,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:460,easing:'cubic-bezier(.2,.8,.2,1)'})}
